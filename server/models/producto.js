@@ -20,6 +20,10 @@ var productoSchema = new Schema({
         required: true,
         default: true
     },
+    img: {
+        type: String,
+        require: false
+    },
     categoria: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'categoria',

@@ -103,6 +103,7 @@ app.post('/producto', verificaToken, (req, res) => {
         precioUni: body.precioUni,
         descripcion: body.descripcion,
         disponible: body.disponible,
+        img: body.img,
         categoria: body.categoria,
     });
 
@@ -155,6 +156,7 @@ app.put('/producto/:id', verificaToken, (req, res) => {
         productoDB.precioUni = body.precioUni;
         productoDB.categoria = body.categoria;
         productoDB.disponible = body.disponible;
+        productoDB.img = body.img;
         productoDB.descripcion = body.descripcion;
 
         productoDB.save((err, productoGuardado) => {

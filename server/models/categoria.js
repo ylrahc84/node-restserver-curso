@@ -8,6 +8,15 @@ let categoriaSchema = new Schema({
         type: String,
         require: [true, 'La Descripcion es necesario']
     },
+    img: {
+        type: String,
+        require: false
+    },
+    disponible: {
+        type: Boolean,
+        required: true,
+        default: true
+    },
     usuario: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "usuario"

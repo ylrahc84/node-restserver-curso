@@ -62,6 +62,8 @@ app.post('/categoria', verificaToken, (req, res) => {
 
     let categoria = new Categoria({
         descripcion: body.descripcion,
+        img: body.img,
+        disponible: body.disponible,
         usuario: req.usuario._id
     });
 
@@ -96,7 +98,9 @@ app.put('/categoria/:id', verificaToken, (req, res) => {
     let body = req.body;
 
     let descCategoria = {
-        descripcion: body.descripcion
+        descripcion: body.descripcion,
+        img: body.img,
+        disponible: body.disponible,
     }
 
     Categoria.findByIdAndUpdate(id, descCategoria, { new: true, runValidators: true }, (err, categoriaDB) => {
