@@ -30,7 +30,6 @@ app.get('/usuario', verificaToken, (req, res) => {
                     err
                 })
             }
-
             Usuario.countDocuments({ estado: true }, (err, conteo) => {
                 res.json({
                     ok: true,
@@ -87,7 +86,6 @@ app.put('/usuario/:id', [verificaToken, verificaAdmin_Role], function(req, res) 
 app.delete('/usuario/:id', [verificaToken, verificaAdmin_Role], function(req, res) {
 
     let id = req.params.id;
-
     let cambiaEstado = {
         estado: false
     };

@@ -5,7 +5,6 @@ let rolesValidos = {
     values: ['ADMIN_ROLE', 'USER_ROLE'],
     message: '{VALUE} no es un rol valido'
 };
-
 let Schema = mongoose.Schema;
 
 let usuarioSchema = new Schema({
@@ -41,13 +40,9 @@ let usuarioSchema = new Schema({
         default: false,
         require: [true, 'Google es obligatoria']
     }
-
 });
-
-
 //De esta forma modificamos el USer Schema para la presentacion 
 usuarioSchema.method.toJSON = function() {
-
     let user = this;
     let userObject = user.toObject();
     delete userObject.password;
