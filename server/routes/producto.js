@@ -18,7 +18,7 @@ app.get('/producto', verificaToken, (req, res) => {
         .limit(10)
         .sort('nombre') //Esto es para ordenar Alfabeticamente
         .populate('usuario', 'nombre email') // Es para cuando tenemos un campo Object Id y podemos jalar la informacion hererada
-        .populate('categoria', 'descripcion') // Es para cuando tenemos un campo Object Id y podemos jalar la informacion hererada
+        .populate('categoria', 'nomcategoria') // Es para cuando tenemos un campo Object Id y podemos jalar la informacion hererada
         .exec((err, productos) => {
             if (err) {
                 return res.status(500).json({
@@ -42,7 +42,7 @@ app.get('/producto/:id', verificaToken, (req, res) => {
 
     Producto.findById(id)
         .populate('usuario', 'nombre email') // Es para cuando tenemos un campo Object Id y podemos jalar la informacion hererada
-        .populate('categoria', 'nombre') // Es para cuando tenemos un campo Object Id y podemos jalar la informacion hererada
+        .populate('categoria', 'nomcategoria') // Es para cuando tenemos un campo Object Id y podemos jalar la informacion hererada
         .exec((err, productoDB) => {
             if (err) {
                 return res.status(500).json({
@@ -74,7 +74,7 @@ app.get('/producto/buscar/:termino', verificaToken, (req, res) => {
     let reges = new RegExp(termino, 'i'); //ESta linea es para buscar por coindicencias 
 
     Producto.find({ nombre: reges })
-        .populate('categoria', 'nombre') // Es para cuando tenemos un campo Object Id y podemos jalar la informacion hererada
+        .populate('categoria', 'nomcategoria') // Es para cuando tenemos un campo Object Id y podemos jalar la informacion hererada
         .exec((err, productos) => {
             if (err) {
                 return res.status(500).json({

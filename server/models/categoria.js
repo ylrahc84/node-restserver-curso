@@ -4,15 +4,15 @@ const uniqueValidator = require('mongoose-unique-validator');
 let Schema = mongoose.Schema;
 
 let categoriaSchema = new Schema({
-    descripcion: {
+    nomcategoria: {
         type: String,
         require: [true, 'La Descripcion es necesario']
     },
-    img: {
+    fotourl: {
         type: String,
         require: false
     },
-    disponible: {
+    visible: {
         type: Boolean,
         required: true,
         default: true

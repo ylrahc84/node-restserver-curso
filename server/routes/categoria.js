@@ -10,7 +10,7 @@ const app = express();
 //===============================
 app.get('/categoria', verificaToken, (req, res) => {
     Categoria.find({})
-        .sort('descripcion') //Esto es para ordenar Alfabeticamente
+        .sort('nomcategoria') //Esto es para ordenar Alfabeticamente
         .populate('usuario', 'nombre email') // Es para cuando tenemos un campo Object Id y podemos jalar la informacion hererada
         .exec((err, categorias) => {
             if (err) {
@@ -30,7 +30,7 @@ app.get('/categoria', verificaToken, (req, res) => {
 //Mostrar una categoria por ID
 //===============================
 app.get('/categoria/:id', verificaToken, (req, res) => {
-    //Categoria.findById();
+
     let id = req.params.id;
 
     Categoria.findById(id, (err, categoriaDB) => {
@@ -61,9 +61,9 @@ app.post('/categoria', verificaToken, (req, res) => {
     let body = req.body;
 
     let categoria = new Categoria({
-        descripcion: body.descripcion,
-        img: body.img,
-        disponible: body.disponible,
+        nomcategoria: body.nomcategoria,
+        fotourl: body.fotourl,
+        visible: body.visible,
         usuario: req.usuario._id
     });
 
@@ -98,9 +98,9 @@ app.put('/categoria/:id', verificaToken, (req, res) => {
     let body = req.body;
 
     let descCategoria = {
-        descripcion: body.descripcion,
-        img: body.img,
-        disponible: body.disponible,
+        nomcategoria: body.nomcategoria,
+        fotourl: body.fotourl,
+        visible: body.visible,
     }
 
     Categoria.findByIdAndUpdate(id, descCategoria, { new: true, runValidators: true }, (err, categoriaDB) => {
