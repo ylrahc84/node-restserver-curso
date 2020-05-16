@@ -99,6 +99,7 @@ app.post('/producto', verificaToken, (req, res) => {
 
     let producto = new Producto({
         usuario: req.usuario._id,
+        codprodu: body.codprodu,
         nombre: body.nombre,
         precioUni: body.precioUni,
         descripcion: body.descripcion,
@@ -153,6 +154,8 @@ app.put('/producto/:id', verificaToken, (req, res) => {
                 }
             });
         }
+
+        productoDB.codprodu = body.codprodu;
         productoDB.nombre = body.nombre;
         productoDB.precioUni = body.precioUni;
         productoDB.categoria = body.categoria;

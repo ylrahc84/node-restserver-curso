@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 
 var productoSchema = new Schema({
+    codprodu: {
+        type: String,
+        required: [true, 'El codigo de producto es necesario']
+    },
     nombre: {
         type: String,
         required: [true, 'El nombre es necesario']
