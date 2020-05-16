@@ -61,6 +61,7 @@ app.post('/categoria', verificaToken, (req, res) => {
     let body = req.body;
 
     let categoria = new Categoria({
+        codcate: body.codcate,
         nomcategoria: body.nomcategoria,
         fotourl: body.fotourl,
         visible: body.visible,

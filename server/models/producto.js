@@ -24,6 +24,10 @@ var productoSchema = new Schema({
         type: String,
         require: false
     },
+    codcate: {
+        type: String,
+        require: [true, 'Codigo Interno es necesario']
+    },
     categoria: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'categoria',

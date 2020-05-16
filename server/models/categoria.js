@@ -4,6 +4,10 @@ const uniqueValidator = require('mongoose-unique-validator');
 let Schema = mongoose.Schema;
 
 let categoriaSchema = new Schema({
+    codcate: {
+        type: String,
+        require: [true, 'Codigo Interno es necesario']
+    },
     nomcategoria: {
         type: String,
         require: [true, 'La Descripcion es necesario']

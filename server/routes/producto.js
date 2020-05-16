@@ -73,7 +73,7 @@ app.get('/producto/buscar/:termino', verificaToken, (req, res) => {
     let termino = req.params.termino;
     let reges = new RegExp(termino, 'i'); //ESta linea es para buscar por coindicencias 
 
-    Producto.find({ nombre: reges })
+    Producto.find({ codcate: reges })
         .populate('categoria', 'nomcategoria') // Es para cuando tenemos un campo Object Id y podemos jalar la informacion hererada
         .exec((err, productos) => {
             if (err) {
@@ -104,6 +104,7 @@ app.post('/producto', verificaToken, (req, res) => {
         descripcion: body.descripcion,
         disponible: body.disponible,
         img: body.img,
+        codcate: body.codcate,
         categoria: body.categoria,
     });
 
@@ -157,6 +158,7 @@ app.put('/producto/:id', verificaToken, (req, res) => {
         productoDB.categoria = body.categoria;
         productoDB.disponible = body.disponible;
         productoDB.img = body.img;
+        productoDB.codcate = body.codcate;
         productoDB.descripcion = body.descripcion;
 
         productoDB.save((err, productoGuardado) => {
